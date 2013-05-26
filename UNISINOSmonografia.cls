@@ -53,6 +53,7 @@
 % Exemplos de uso:
 %   \autor{Sobrenome}{Nomes Iniciais}
 %   \orientador[Prof.~Dr.]{Sobrenome}{Nomes Iniciais}
+%   \supervisor[Prof.~Dr.]{Sobrenome}{Nomes Iniciais}
 %   \coorientador[Profa.~Dra.]{Sobrenome}{Nomes Iniciais}
 %   \unidade{Unidade Acadêmica de Pesquisa e Pós-Graduação}
 %   \natureza{Dissertação apresentada como requisito parcial etc etc...}
@@ -73,6 +74,11 @@
 	\gdef\@advisortitle{#1}
 	\gdef\@advisorlast{#2}
 	\gdef\@advisorfirst{#3}
+}
+\DeclareRobustCommand{\supervisor}[3][]{
+	\gdef\@supervisortitle{#1}
+	\gdef\@supervisorlast{#2}
+	\gdef\@supervisorfirst{#3}
 }
 \DeclareRobustCommand{\coorientador}[3][]{
 	\gdef\@coadvisortitle{#1}
@@ -490,9 +496,17 @@
 	\begin{flushright}
 		\parbox{.5\textwidth}{%
 			\raggedright\sloppy%
-			\@natureza\\[4ex]
-			\orientadorname:\\
-			\@advisortitle~\@advisorfirst\ \@advisorlast
+			\@natureza
+			\@ifundefined{@supervisorlast}{}{%
+				\\[4ex]
+				\supervisorname:\\
+				\@supervisortitle~\@supervisorfirst\ \@supervisorlast
+			}
+			\@ifundefined{@advisorlast}{}{%
+				\\[4ex]
+				\orientadorname:\\
+				\@advisortitle~\@advisorfirst\ \@advisorlast
+			}
 			\@ifundefined{@coadvisorlast}{}{%
 				\\[4ex]
 				\coorientadorname:\\
@@ -539,6 +553,7 @@
 		\@local, \@ano.
 
 		``\orientadorname: \@advisortitle\ \@advisorfirst\ \@advisorlast, \@unidade''.
+		``\supervisorname: \@advisortitle\ \@advisorfirst\ \@advisorlast, \@unidade''.
 
 		\@cipkw I.~T\'{\i}tulo.
 
@@ -749,6 +764,7 @@
 	\def\proofname{Prova}
 	\def\figurename{Figura}
 	\def\tablename{Tabela}
+	\def\supervisorname{Supervisor}
 	\def\orientadorname{Orientador}
 	\def\coorientadorname{Coorientador}
 	\def\ackname{Agradecimentos}
@@ -783,6 +799,7 @@
 	\def\proofname{Proof}
 	\def\figurename{Figure}
 	\def\tablename{Table}
+	\def\supervisorname{Supervisor}
 	\def\orientadorname{Advisor}
 	\def\coorientadorname{Co-advisor}
 	\def\ackname{Acknowledgements}
