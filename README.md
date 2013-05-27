@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 tugunisinos: Classes LaTeX para Monografias e Artigos no Padrão da UNISINOS
 ==============================================================
 
@@ -34,3 +35,9 @@ atento para mensagens de erro e avisos que possam aparecer.
 
 Em caso de dúvida, envie mensagem para o grupo "tugunisinos" em
 http://groups.google.com/group/tugunisinos
+=======
+unisinos
+========
+
+My repository for University papers and so on
+>>>>>>> 5d34590bc4fc654b31cc3e7f0c17585a227f5d3c
